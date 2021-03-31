@@ -61,7 +61,7 @@ def programa():
             km_contactor_off = False
 
 
-if __name__ == "__Coveless_Raspberry_API_Client__":
+if __name__ == "__main__":
     chequeo = Thread(target=programa, daemon=True)
     chequeo.start()
     uvicorn.run(proyecto_client, host="0.0.0.0", port=8080)
