@@ -38,7 +38,7 @@ while True:
         km_contactor.off()
         led_contactor.on()
     requests.post("http://192.168.43.221:8080/estado", data=json.dumps(contactor_activo))  # IP cliente
-
+    print(contactor_activo)
 
 
 
