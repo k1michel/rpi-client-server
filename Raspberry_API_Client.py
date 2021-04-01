@@ -31,12 +31,12 @@ proyecto_client = FastAPI()
 #####################
 #  API
 #####################
-@proyecto_client.get("/estado")
+@proyecto_client.post("/estado")
 def recibir_estado(contactor_activo):
     global estado_contactor
     estado_contactor = contactor_activo
     return estado_contactor
-@proyecto_client.post("/desactivacion")
+@proyecto_client.get("/desactivacion")
 def enviar_desactivacion():
     global km_contactor_off
     return km_contactor_off
