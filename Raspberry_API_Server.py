@@ -20,7 +20,7 @@ contactor_activo= {
     'estado_contactor': bool(False)
 }
 recibir_desactivacion = {
-    'desactivacion': None
+    'desactivacion': False
 }
 ####################
 # PROGRAMA BUCLE

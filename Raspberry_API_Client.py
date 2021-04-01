@@ -20,7 +20,7 @@ led_contactor = LED(6)
 #  VARIABLES GLOBALES
 #####################
 recibir_contactor = {
-    'estado_contactor': None
+    'estado_contactor': False
 }
 
 km_contactor= {
