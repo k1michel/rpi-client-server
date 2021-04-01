@@ -19,10 +19,11 @@ led_contactor = LED(6)
 #####################
 #  VARIABLES GLOBALES
 #####################
-estado_contactor = None
+recibir_contactor = None
 
-km_contactor_off= False
-
+km_contactor= {
+    'desactivavion': bool(False)
+}
 #####################
 # CREACION API
 #####################
@@ -33,34 +34,34 @@ proyecto_client = FastAPI()
 #####################
 @proyecto_client.post("/estado")
 def recibir_estado(contactor_activo):
-    global estado_contactor
-    estado_contactor = contactor_activo
-    return estado_contactor
+    global recibir_contactor
+    recibir_contactor = contactor_activo
+    return recibir_contactor
 @proyecto_client.get("/desactivacion")
 def enviar_desactivacion():
-    global km_contactor_off
-    return km_contactor_off
+    global km_contactor
+    return km_contactor
 
 ###################
 # PROGRAMA 2PLANO
 ###################
 def programa():
-    global km_contactor_off
-    global estado_contactor
+    global km_contactor
+    global recibir_contactor
     while True:
-        if estado_contactor == True:
+        if recibir_contactor.estado_contactor == True:
             led_contactor.on()
             print("Contactor activado")
             if (pulsador_1.is_pressed or pulsador_2.is_pressed or pulsador_3.is_presseed):
-                km_contactor_off=True
+                km_contactor.desactivacion=True
                 print("Contactor Desactivado")
 
         else:
             led_conexion.on()
             led_contactor.off()
-            km_contactor_off = False
-        print("estado contactor",estado_contactor)
-        print("km contactor",km_contactor_off)
+            km_contactor.desactivacion = False
+        print("Recibido contactor", recibir_contactor)
+        print("km contactor", km_contactor)
         print("Pulsador", pulsador_1.is_pressed)
         sleep(3)
 
