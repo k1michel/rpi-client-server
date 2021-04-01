@@ -3,7 +3,7 @@ from fastapi import FastAPI
 import uvicorn
 from gpiozero import Button, LED
 from threading import Thread
-
+from time import sleep
 ####################
 #   GPIO RASPBERRY
 ####################
@@ -62,7 +62,7 @@ def programa():
         print("estado contactor",estado_contactor)
         print("km contactor",km_contactor_off)
         print("Pulsador", pulsador_1.is_pressed)
-
+        sleep(3)
 
 if __name__ == "__main__":
     chequeo = Thread(target=programa, daemon=True)
