@@ -1,4 +1,5 @@
 from typing import Optional
+from pydantic import BaseModel
 from fastapi import FastAPI
 import uvicorn
 from gpiozero import Button, LED
@@ -37,8 +38,9 @@ proyecto_client = FastAPI()
 @proyecto_client.post("/estado")
 def recibir_estado(contactor_activo):
     global recibir_contactor
-    recibir_contactor = contactor_activo
-    return recibir_contactor
+    #recibir_contactor = contactor_activo
+    print(contactor_activo)
+    return "OK"
 @proyecto_client.get("/desactivacion")
 def enviar_desactivacion():
     global km_contactor
