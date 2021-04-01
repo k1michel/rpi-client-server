@@ -26,7 +26,8 @@ recibir_desactivacion = {
 # PROGRAMA BUCLE
 ####################
 while True:
-    if pulsador_1.is_pressed==True and contactor_activo['estado_contactor']==False:
+    print("Pulsador antes", pulsador_1.is_active)
+    if pulsador_1.is_active==True and contactor_activo['estado_contactor']==False:
         contactor_activo['estado_contactor']= True
     if contactor_activo['estado_contactor']==True:
         km_contactor.on()
