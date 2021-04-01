@@ -2,7 +2,7 @@
 name = "rpi-miyel"
 version = "0.1.0"
 description = ""
-authors = ["Javier Fernández <jfernandz1290@gmail.com>"]
+authors = ["Miguel Ángel Álvarez <michel_civic@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
