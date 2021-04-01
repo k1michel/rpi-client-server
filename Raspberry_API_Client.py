@@ -20,11 +20,11 @@ led_contactor = LED(6)
 #  VARIABLES GLOBALES
 #####################
 recibir_contactor = {
-    'estado_contactor': False
+    "estado_contactor": False
 }
 
 km_contactor= {
-    'desactivacion': bool(False)
+    "desactivacion": bool(False)
 }
 #####################
 # CREACION API
@@ -51,17 +51,17 @@ def programa():
     global km_contactor
     global recibir_contactor
     while True:
-        if recibir_contactor['estado_contactor'] == True:
+        if recibir_contactor["estado_contactor"] == True:
             led_contactor.on()
             print("Contactor activado")
             if (pulsador_1.is_pressed or pulsador_2.is_pressed or pulsador_3.is_presseed):
-                km_contactor['desactivacion']=True
+                km_contactor["desactivacion"]=True
                 print("Contactor Desactivado")
 
         else:
             led_conexion.on()
             led_contactor.off()
-            km_contactor['desactivacion'] = False
+            km_contactor["desactivacion"] = False
         print("Recibido contactor", recibir_contactor)
         print("km contactor", km_contactor)
         print("Pulsador", pulsador_1.is_pressed)

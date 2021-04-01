@@ -17,27 +17,27 @@ km_contactor.off()
 # VARIABLES GLOBALES
 ####################
 contactor_activo= {
-    'estado_contactor': bool(False)
+    "estado_contactor": bool(False)
 }
 recibir_desactivacion = {
-    'desactivacion': False
+    "desactivacion": False
 }
 ####################
 # PROGRAMA BUCLE
 ####################
 while True:
-    print("Pulsador antes", pulsador_1.is_active)
-    if pulsador_1.is_active==True and contactor_activo['estado_contactor']==False:
-        contactor_activo['estado_contactor']= True
-    if contactor_activo['estado_contactor']==True:
+    print("Pulsador antes", pulsador_1.is_pressed)
+    if pulsador_1.is_pressed==True and contactor_activo["estado_contactor"]==False:
+        contactor_activo["estado_contactor"]= True
+    if contactor_activo["estado_contactor"]==True:
         km_contactor.on()
         led_contactor.on()
         sleep(1)
         led_contactor.off()
         sleep(1)
         recibir_desactivacion = requests.get("http://192.168.43.221:8080/desactivacion",verify=False).json() #IP cliente
-        if recibir_desactivacion['desactivacion']==True:
-            contactor_activo['estado_contactor']= False
+        if recibir_desactivacion["desactivacion"]==True:
+            contactor_activo["estado_contactor"]= False
 
     else:
         km_contactor.off()
