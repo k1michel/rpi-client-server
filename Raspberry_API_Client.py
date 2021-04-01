@@ -59,6 +59,9 @@ def programa():
             led_conexion.on()
             led_contactor.off()
             km_contactor_off = False
+        print("estado contactor",estado_contactor)
+        print("km contactor",km_contactor_off)
+        print("Pulsador", pulsador_1.is_pressed)
 
 
 if __name__ == "__main__":
