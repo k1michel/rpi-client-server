@@ -15,18 +15,16 @@ pulsador_3 = Button(25)
 led_conexion = LED(5)
 led_contactor = LED(6)
 
-
-
 #####################
 #  VARIABLES GLOBALES
 #####################
-
 km_contactor= {
     "desactivacion": bool(False)
 }
 recibir_contactor=dict(
     estado_contactor = False
 )
+
 #####################
 # CREACION API
 #####################
@@ -58,19 +56,20 @@ def programa():
     while True:
         if recibir_contactor["estado_contactor"] == True:
             led_contactor.on()
-            print("Contactor activado")
             if (pulsador_1.is_pressed or pulsador_2.is_pressed or pulsador_3.is_pressed):
-                km_contactor["desactivacion"]=True
+                km_contactor["desactivacion"] = True
                 print("Contactor Desactivado")
 
         else:
             led_conexion.on()
             led_contactor.off()
             km_contactor["desactivacion"] = False
-        print("Recibido contactor", recibir_contactor)
-        print("km contactor", km_contactor)
-        print("Pulsador", pulsador_1.is_pressed)
-        sleep(3)
+        print("\n" + "-"*30)
+        print("Recibido estado contactor => ", recibir_contactor)
+        print("Desactivacion km_contactor => ", km_contactor)
+        print("Pulsador 1 => ", pulsador_1.is_pressed,"\nPulsador 2 => ", pulsador_2.is_pressed, "\nPulsador 3 => ",pulsador_3.is_pressed)
+        print("-"*30 + "\n")
+        sleep(1)
 
 if __name__ == "__main__":
     chequeo = Thread(target=programa, daemon=True)
