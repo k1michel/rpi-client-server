@@ -36,14 +36,14 @@ while True:
         sleep(1)
         led_contactor.off()
         sleep(1)
-        recibir_desactivacion = requests.get("http://192.168.43.221:8080/desactivacion",verify=False).json() #IP cliente
+        recibir_desactivacion = requests.get("http://192.168.0.186:8080/desactivacion",verify=False).json() #IP cliente
         if recibir_desactivacion["desactivacion"] == True:
             contactor_activo["estado_contactor"] = False
 
     else:
         km_contactor.off()
         led_contactor.on()
-    requests.post("http://192.168.43.221:8080/estado", data=json.dumps(contactor_activo))  # IP cliente
+    requests.post("http://192.168.0.186:8080/estado", data=json.dumps(contactor_activo))  # IP cliente
     print("\n" + "-"*30)
     print("Estado Contactor => ",contactor_activo)
     print("Pusador => ", pulsador_1.is_pressed)
